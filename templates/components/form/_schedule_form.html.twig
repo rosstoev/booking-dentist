@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr' : {'id' : 'schedule-form'}}) }}
+<div class="modal-header">
+    <h5 class="modal-title" id="schedule-form-modal-label">Запази час</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    {{ form_row(form.startFrom, {'label' : 'Дата и час', 'attr' : {'readonly' : 'readonly'}}) }}
+    {{ form_row(form.email, {'label' : 'Имейл'} ) }}
+    {{ form_row(form.name, {'label' : 'Име'} ) }}
+    {{ form_row(form.phoneNumber, {'label' : 'Телефон'} ) }}
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" role="button">Затвори</button>
+    <button type="submit" class="btn btn-primary">Запази</button>
+</div>
+{{ form_end(form) }}
