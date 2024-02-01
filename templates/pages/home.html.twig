@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Запази час{% endblock %}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        const events = {{ events|raw }}
+    </script>
+{% endblock %}
 {% block body %}
     <div class="container">
         {% for message in app.flashes('success') %}

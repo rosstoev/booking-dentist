@@ -22,6 +22,7 @@ function onDateClickHandler(calendar) {
     }
 }
 document.addEventListener('DOMContentLoaded', function () {
+    console.log(events);
     const options = {
         locale: "bg",
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, fullcalendarBootstrap5],
@@ -51,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
         allDaySlot: false,
         slotDuration: "01:00",
         snapDuration: "01:00",
-        dateClick: onDateClickHandler
+        dateClick: onDateClickHandler,
+        events: events
     };
 
     const calendarEl = document.getElementById('calendar');

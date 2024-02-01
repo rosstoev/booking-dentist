@@ -7,6 +7,8 @@ namespace App\Entity;
 use App\Repository\ScheduleRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Ignore;
+use Symfony\Component\Serializer\Attribute\SerializedName;
 
 #[ORM\Entity(repositoryClass: ScheduleRepository::class)]
 class Schedule
@@ -14,21 +16,27 @@ class Schedule
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Ignore]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Ignore]
     private ?DateTimeImmutable $startFrom = null;
 
     #[ORM\Column]
+    #[Ignore]
     private ?DateTimeImmutable $endOn = null;
 
     #[ORM\Column(length: 255)]
+    #[Ignore]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Ignore]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Ignore]
     private ?string $phoneNumber = null;
 
     public function getId(): ?int
@@ -94,5 +102,23 @@ class Schedule
         $this->phoneNumber = $phoneNumber;
 
         return $this;
+    }
+
+    #[SerializedName('title')]
+    public function getTitle(): string
+    {
+        return "{$this->name} - {$this->phoneNumber}";
+    }
+
+    #[SerializedName('start')]
+    public function getStart(): string
+    {
+        return $this->startFrom->format('Y-m-d') . 'T' . $this->startFrom->format('H:i:s');
+    }
+
+    #[SerializedName('end')]
+    public function getEnd(): string
+    {
+        return $this->endOn->format('Y-m-d') . 'T' . $this->endOn->format('H:i:s');
     }
 }
