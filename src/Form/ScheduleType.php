@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ScheduleType extends AbstractType
 {
@@ -68,6 +69,14 @@ class ScheduleType extends AbstractType
             'constraints' => [
                 new NotBlank([
                     'message' => 'Моля, въведете телефонен номер.'
+                ]),
+                new Regex([
+                    'pattern' => '/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{4,9}$/',
+                    'message' => 'Телефонния номер не е валиден.'
+                ]),
+                new Length([
+                    'max' => 255,
+                    'maxMessage' => "Дължината на телефонния номер е невалидна."
                 ])
             ]
         ]);
