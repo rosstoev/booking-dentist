@@ -2,10 +2,11 @@
 
 ## Requirements
 
-| Name       | version  |
-|------------|:--------:|
-| PHP        |   v8.1   |
-| MariaDB    | v10.16.* |
+| Name                         | version |
+|------------------------------|:-------:|
+| PHP                          |  v8.1   |
+| MariaDB or PostgreSQL        |         |
+| Web server (Apache or Nginx) |         |
 
 ## Optional tools
 
