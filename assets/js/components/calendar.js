@@ -7,7 +7,6 @@ import {Modal} from "bootstrap";
 
 import {formatDate} from "../utils/formatter.js";
 
-
 function onDateClickHandler(calendar) {
     const hours = calendar.date.getHours();
 
@@ -21,8 +20,8 @@ function onDateClickHandler(calendar) {
         modal.show();
     }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
-    console.log(events);
     const options = {
         locale: "bg",
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, fullcalendarBootstrap5],
