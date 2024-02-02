@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Запази час{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        const events = {{ events|raw }}
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success my-5">{{ message }}</div>
+        {% endfor %}
+        <h1 class="h1 text-center my-4">Запази си час за зъболекар</h1>
+        <div class="my-5">
+            <div id="calendar"></div>
+        </div>
+    </div>
+    {% include "components/modal/_schedule_modal.html.twig" with {'form' : form} %}
+{% endblock %}
