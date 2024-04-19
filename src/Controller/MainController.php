@@ -18,6 +18,7 @@ class MainController extends AbstractController
     {
         $form = $this->createForm(ScheduleType::class);
         $schedules = $scheduleRepo->findAll();
+
         $events = $serializer->serializeAsJson($schedules);
 
         return $this->render('pages/home.html.twig', [
